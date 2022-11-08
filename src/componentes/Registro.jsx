@@ -43,29 +43,29 @@ const Registro = () => {
                 <Grid templateColumns='repeat(2, 1fr)' gap={4}>
                     <FormControl id='nombre' isRequired>
                         <FormLabel>Nombre</FormLabel>
-                        <Input type='texto' name='nombre' placeHolder='Nombre' value={nombre} onChange={handleInputChange}/>
+                        <Input type='texto' name='nombre' placeholder='Nombre' value={nombre} onChange={handleInputChange}/>
                     </FormControl>
                     <FormControl id='apellido' isRequired>
                         <FormLabel>Apellido</FormLabel>
-                        <Input type='texto' name='apellido' placeHolder='Apellido' value={apellido} onChange={handleInputChange}/>
+                        <Input type='texto' name='apellido' placeholder='Apellido' value={apellido} onChange={handleInputChange}/>
                     </FormControl>
                 </Grid>
                 <Stack spacing={4}>
                     <FormControl id='email' isRequired>
                         <FormLabel>Correo</FormLabel>
-                        <Input type='email' name='email' placeHolder='Correo' value={email} onChange={handleInputChange}/>
+                        <Input type='email' name='email' placeholder='Correo' value={email} onChange={handleInputChange}/>
                     </FormControl>
                     <FormControl id='password' isRequired>
                         <FormLabel>Contraseña</FormLabel>
-                        <Input type='password' name='password' placeHolder='contraseña' value={password} onChange={handleInputChange}/>
+                        <Input type='password' name='password' placeholder='contraseña' value={password} onChange={handleInputChange}/>
                     </FormControl>
                     <FormControl id='confirmarContraseña' isRequired>
                         <FormLabel>Confirmar Contraseña</FormLabel>
-                        <Input type='password' name='confirmarContraseña' placeHolder='Confirmar Contraseña'/>
+                        <Input type='password' name='confirmarContraseña' placeholder='Confirmar Contraseña'/>
                     </FormControl>
                     <FormControl id='phone' isRequired>
                         <FormLabel>Telefono</FormLabel>
-                        <Input type='texto' name='phone' placeHolder='telefono' value={phone} onChange={handleInputChange}/>
+                        <Input type='texto' name='phone' placeholder='telefono' value={phone} onChange={handleInputChange}/>
                     </FormControl>
                     <Button type='submit' colorScheme='blue'>Registrar</Button>
                 </Stack>
