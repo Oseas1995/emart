@@ -22,7 +22,7 @@ const Home = () => {
                 Nav
             </GridItem>
             <GridItem pl='2' bg='gray.50' area={'main'}>
-                <Registro />
+                Productos
             </GridItem>
             <GridItem pl='2' bg='blue.300' area={'footer'}>
                 Footer
