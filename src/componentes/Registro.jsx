@@ -1,4 +1,4 @@
-import { FormControl, FormLabel, Grid, Heading, Input, Stack } from '@chakra-ui/react'
+import { FormControl, FormLabel, Grid, Heading, Input, Stack, Button } from '@chakra-ui/react'
 
 const Registro = () => {
     return (
@@ -32,7 +32,9 @@ const Registro = () => {
                         <FormLabel>Telefono</FormLabel>
                         <Input type='texto' name='telefono' placeHolder='telefono' />
                     </FormControl>
+                    <Button colorScheme='blue'>Registrar</Button>
                 </Stack>
+                
             </form>
         </>
     )
