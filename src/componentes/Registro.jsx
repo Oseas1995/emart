@@ -39,9 +39,9 @@ const Registro = () => {
     return (
         <>
             <Grid h='100%' placeContent='center' w='auto'>
-                <Heading fontSize='2xl' mb='10px'>Registro</Heading>
+                <Heading fontSize='2xl' mb='20px'>Registro</Heading>
                 <form onSubmit={handleSubmit}>
-                    <Grid templateColumns='repeat(2, 1fr)' gap={2}>
+                    <Grid templateColumns='repeat(2, 1fr)' gap={4}>
                         <FormControl id='nombre' isRequired>
                             <FormLabel>Nombre</FormLabel>
                             <Input type='texto' name='nombre' placeholder='Nombre' value={nombre} onChange={handleInputChange}/>
