@@ -1,34 +1,25 @@
 import Registro from './Registro'
-import { Grid, GridItem } from '@chakra-ui/react'
+import "./Home.css"
+import { Box, Grid } from '@chakra-ui/react'
+import Producto from "./Producto"
 
-const Home = () => {
+function Home() {
     return (
-        <>
-            <Grid
-            templateAreas={`"header header"
-                            "nav main"
-                            "nav footer"`}
-            gridTemplateRows={'50px 1fr 30px'}
-            gridTemplateColumns={'150px 1fr'}
-            h='200px'
-            gap='1'
-            color='blackAlpha.700'
-            fontWeight='bold'
-            >
-            <GridItem pl='2' bg='orange.300' area={'header'}>
-                NanVar
-            </GridItem>
-            <GridItem pl='2' bg='pink.300' area={'nav'}>
-                Nav
-            </GridItem>
-            <GridItem pl='2' bg='gray.50' area={'main'}>
-                Productos
-            </GridItem>
-            <GridItem pl='2' bg='blue.300' area={'footer'}>
-                Footer
-            </GridItem>
+        <div className="home">
+            <div className="home_contenedor">
+                <h1><big size="20px">Pagina Inicial</big></h1>
+                <Grid templateColumns='repeat(6, 1fr)' gap={4}>
+                <Producto />
+                <Producto />
+                <Producto />
+                <Producto />
+                <Producto />
+                <Producto />
+                <Producto />
+                <Producto />
             </Grid>
-        </>
+        </div>
+        </div >
     )
 }
 

@@ -1,0 +1,35 @@
+.producto {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-end;
+    margin: 10px;
+    padding: 20px;
+    width: 100%;
+    max-width: 400px;
+    min-width: 100px;
+    background: rgb(109, 111, 199);
+    z-index: 1;
+}
+
+.producto>img{
+    max-height: 200px;
+    width: 100%;
+    object-fit: scale-down;
+    margin-bottom: 15px;
+}
+
+.pro_info{
+    height: 100px;
+    margin-bottom: 30px;
+}
+
+.pro_precio{
+    margin-top: 5px;
+}
+
+.pro_calificacion{
+    display: flex;    
+    justify-content: space-evenly;
+}
+
