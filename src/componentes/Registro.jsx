@@ -47,7 +47,8 @@ const Registro = () => {
                 id: user.id,
                 nombre: nombre,
                 apellido: apellido,
-                telefono: phone
+                telefono: phone,
+                es_admin: false
             }
             await actualizarUsuario(data)
         }
