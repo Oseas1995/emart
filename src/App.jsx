@@ -5,7 +5,7 @@ import Fondo from './componentes/Fondo'
 function App() {
 
   return (
-    <Container maxW='100%' h='100vh'>
+    <Container padding={0} maxW='100%' h='100vh'>
       <Cabecera />
       <AppRouter />
       <Fondo />

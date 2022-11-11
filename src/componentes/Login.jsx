@@ -10,7 +10,7 @@ const Login = () => {
     const { formularioRegistro, handleInputChange } = useForm(initialState)
     
     const { email, password } = formularioRegistro
-    
+
     
     const handleSubmit = async (e) => {
         e.preventDefault()
