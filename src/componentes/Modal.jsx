@@ -8,7 +8,7 @@ import {
   ModalCloseButton,
   useDisclosure,
 } from '@chakra-ui/react'
-import "./Modal.css"
+
 
 function VentanaModal() {
   const { isOpen, onOpen, onClose } = useDisclosure()
