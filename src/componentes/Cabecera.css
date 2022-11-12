@@ -1,8 +1,46 @@
-.cabecera{
-    background-color: black;
-    color: white;
-    text-align: center;
-    margin: 0;
-    font-size: 40px;
+.header{
+    display: flex;
+    background-color: #131921;
+    height: 80px;
+    align-items: center;
     padding: auto;
+   
+}
+.header_img{
+    height: 30px;
+    padding: 10px;
+     
+    
+}
+.header_menuicon{
+    
+    color: white;
+    margin:10px;
+    
+    
+}
+
+.header_bar{
+    height: 30px;
+    padding: 10px;
+    width: 100%;
+}
+.header_searchbar{
+   
+    display: flex;
+    flex: 1;
+
+}
+.header_searchicon{
+    
+    padding: 10px;
+    
+    background-color: rgb(47, 158, 231);
+}
+.header_text{
+    color: white;
+    margin:10px;
+    justify-content: space-between;
+    
+
 }
