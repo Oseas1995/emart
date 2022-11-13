@@ -10,9 +10,7 @@ function Cabecera() {
         <div className='header'>
             <div className='header_menuicon'>
                 <HamburgerIcon w={10} h={10} className='header_icon' />
-
             </div>
-
 
             <div className='header_text'> 
                     <Link to='/home'>
@@ -30,7 +28,7 @@ function Cabecera() {
             <div className='header_text'>
                 <Link to='/Login'>
 
-                        INICIAR SESION
+                        Conectarce
 
                     </Link>
 

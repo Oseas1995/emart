@@ -2,7 +2,7 @@ import { Box, HStack, Image } from '@chakra-ui/react'
 import { AiFillStar } from 'react-icons/ai';
 
 {/*debe recibir aqui de base de datos la descripion, presion, etc.*/ }
-function Producto() {
+function Producto(props) {
     return (
         <div className="producto">
             <Box className='pro_info'>
@@ -21,7 +21,8 @@ function Producto() {
             <Image
                 className='img_prod'
                 boxSize='150px'
-                src="https://www.colombianosune.com/sites/default/files/asociaciones/NO_disponible-43_7.jpg"
+                //src="https://www.colombianosune.com/sites/default/files/asociaciones/NO_disponible-43_7.jpg"
+                src={props.Image}
                 alt=""
             />
         </div>

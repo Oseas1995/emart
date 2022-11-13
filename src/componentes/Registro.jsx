@@ -12,7 +12,7 @@ import useForm from '../hooks/useForm'
 import { actualizarUsuario, registroConEmail } from '../servicios/auth'
 import { useState } from "react"
 import terminos from '../servicios/terminos'
-
+import { Link } from 'react-router-dom'
 
 const initialState = {
     nombre: '',
@@ -29,7 +29,7 @@ const Registro = () => {
 
     const { formularioRegistro, handleInputChange } = useForm(initialState)
 
-    const { nombre, apellido, email, password, phone} = formularioRegistro
+    const { nombre, apellido, email, password, phone } = formularioRegistro
 
     const [agree, setAgree] = useState(false);
 
@@ -38,7 +38,7 @@ const Registro = () => {
     }
     const handleSubmit = async (e) => {
         e.preventDefault()
-        const { nombre, apellido, email, password, phone,admin } = formularioRegistro
+        const { nombre, apellido, email, password, phone, admin } = formularioRegistro
         const resultado = await registroConEmail({ email, password })
         // console.log(resultado.data.user.id)
         if (resultado) {
@@ -91,7 +91,7 @@ const Registro = () => {
                             <Input type='texto' name='apellido' placeholder='Apellido' value={apellido} onChange={handleInputChange} />
                         </FormControl>
                     </Grid>
-                    <Stack spacing={5}>
+                    <Stack spacing={6}>
                         <FormControl id='email' isRequired>
                             <FormLabel>Correo</FormLabel>
                             <Input type='email' name='email' placeholder='Correo' value={email} onChange={handleInputChange} />
@@ -114,6 +114,10 @@ const Registro = () => {
                                 <Checkbox id="box" onChange={checkboxHandler}></Checkbox>
                                 <FormLabel>Estoy de acuerdo con los <a onClick={onOpen}>Terminos y condiciones</a></FormLabel>
                             </HStack>
+                        </FormControl>
+                        <FormControl id='identificar' placeContent='center'>
+                            <FormLabel>¿Ya estas Registrado?</FormLabel>
+                            <Link to="/login"><a>Iniciar Sesion</a></Link>
                         </FormControl>
                         <Button isDisabled={!agree} type='submit' colorScheme='blue'>Registrar</Button>
                     </Stack>
