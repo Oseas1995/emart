@@ -5,7 +5,8 @@ import {
     ModalContent,
     ModalFooter,
     ModalBody,
-    useDisclosure
+    useDisclosure,
+
 } from '@chakra-ui/react'
 import useForm from '../hooks/useForm'
 import { actualizarUsuario, registroConEmail } from '../servicios/auth'
@@ -18,7 +19,8 @@ const initialState = {
     apellido: '',
     email: '',
     password: '',
-    phone: ''
+    phone: '',
+    admin: false
 }
 
 const Registro = () => {
@@ -27,7 +29,7 @@ const Registro = () => {
 
     const { formularioRegistro, handleInputChange } = useForm(initialState)
     
-    const { nombre, apellido, email, password, phone } = formularioRegistro
+    const { nombre, apellido, email, password, phone} = formularioRegistro
     
     const [agree, setAgree] = useState(false);
     
@@ -36,11 +38,10 @@ const Registro = () => {
     }
     const handleSubmit = async (e) => {
         e.preventDefault()
-        const { nombre, apellido, email, password, phone } = formularioRegistro
+        const { nombre, apellido, email, password, phone,admin } = formularioRegistro
         const resultado = await registroConEmail({ email, password })
         // console.log(resultado.data.user.id)
         if (resultado) {
-            
             const user = resultado.data.user
             // console.log(user.id);
             const data = {
@@ -48,7 +49,7 @@ const Registro = () => {
                 nombre: nombre,
                 apellido: apellido,
                 telefono: phone,
-                es_admin: false
+                es_admin: admin
             }
             await actualizarUsuario(data)
         }

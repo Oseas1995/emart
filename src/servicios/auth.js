@@ -19,3 +19,14 @@
         console.error(error);
     }
  }
+
+ export const obtenerUsuario = async (data) => {
+    let resultado
+    try{
+        resultado = await supabase.auth.signInWithPassword(data)
+        return resultado
+    } catch (error) {
+        console.error(error)
+    }
+
+ }
