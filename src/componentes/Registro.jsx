@@ -6,6 +6,7 @@ import {
     ModalFooter,
     ModalBody,
     useDisclosure,
+    Container
 
 } from '@chakra-ui/react'
 import useForm from '../hooks/useForm'
@@ -25,13 +26,13 @@ const initialState = {
 }
 
 const Registro = () => {
-    const sesion =supabase.auth.getSession()
-    console.log(sesion);   
+    const sesion = supabase.auth.getSession()
+    console.log(sesion);
     const { isOpen, onOpen, onClose } = useDisclosure()
-    const { formularioRegistro, handleInputChange } = useForm(initialState)    
-    const { nombre, apellido, email, password, phone } = formularioRegistro    
+    const { formularioRegistro, handleInputChange } = useForm(initialState)
+    const { nombre, apellido, email, password, phone } = formularioRegistro
     const [agree, setAgree] = useState(false);
-
+    const [confirmPassword, setConfirmPassword] = useState("");
     const checkboxHandler = async () => {
         setAgree(!agree);
     }
@@ -51,9 +52,18 @@ const Registro = () => {
                 es_admin: admin
             }
             await actualizarUsuario(data)
+            alert("Acabas de registrarte")
         }
     }
+    const validar = (e) => {
+        setConfirmPassword(e.target.value);
+        if (password != confirmPassword) {
 
+        } else {
+
+        }
+
+    }
 
     return (
         <>
@@ -77,53 +87,64 @@ const Registro = () => {
                     </ModalFooter>
                 </ModalContent>
             </Modal>
-            <Grid h='100%' placeContent='center' w='auto'>
-                <Heading fontSize='2xl' mb='20px'>Registro</Heading>
-                <form onSubmit={handleSubmit}>
-                    <Grid templateColumns='repeat(2, 1fr)' gap={4}>
-                        <FormControl id='nombre' isRequired>
-                            <FormLabel>Nombre</FormLabel>
-                            <Input type='texto' name='nombre' placeholder='Nombre' value={nombre} onChange={handleInputChange} />
-                        </FormControl>
-                        <FormControl id='apellido' isRequired>
-                            <FormLabel>Apellido</FormLabel>
-                            <Input type='texto' name='apellido' placeholder='Apellido' value={apellido} onChange={handleInputChange} />
-                        </FormControl>
-                    </Grid>
-                    <Stack spacing={6}>
-                        <FormControl id='email' isRequired>
-                            <FormLabel>Correo</FormLabel>
-                            <Input type='email' name='email' placeholder='Correo' value={email} onChange={handleInputChange} />
-                        </FormControl>
-                        <FormControl id='password' isRequired>
-                            <FormLabel>Contraseña</FormLabel>
-                            <Input type='password' name='password' placeholder='contraseña' value={password} onChange={handleInputChange} />
-                        </FormControl>
-                        <FormControl id='confirmarContraseña' isRequired>
-                            <FormLabel>Confirmar Contraseña</FormLabel>
-                            <Input type='password' name='confirmarContraseña' placeholder='Confirmar Contraseña' />
-                        </FormControl>
-                        <FormControl id='phone' isRequired>
-                            <FormLabel>Telefono</FormLabel>
-                            <Input type='texto' name='phone' placeholder='telefono' value={phone} onChange={handleInputChange} />
-                        </FormControl>
-                        {/*aqui esta el Check de acuerdo a los Tos*/}
-                        <FormControl>
-                            <HStack>
-                                <Checkbox id="box" onChange={checkboxHandler}></Checkbox>
-                                <FormLabel>Estoy de acuerdo con los <a hrf="#" onClick={onOpen}>Terminos y condiciones</a></FormLabel>
-                            </HStack>
-                        </FormControl>
-                        <FormControl id='identificar' placeContent='center'>
-                            <FormLabel>¿Ya estas Registrado?</FormLabel>
-                            <Link to="/login"><a>Iniciar Sesion</a></Link>
-                        </FormControl>
-                        <Button isDisabled={!agree} type='submit' colorScheme='blue'>Registrar</Button>
-                    </Stack>
-                </form>
-            </Grid>
+            <Container backgroundColor={"blue.50"}>
+                <Grid height="100%" placeContent='center'>
+                    <Heading fontSize='2xl' mb='20px'>Registro</Heading>
+                    <form onSubmit={handleSubmit}>
+                        <Grid templateColumns='repeat(2, 1fr)' gap={4}>
+                            <FormControl id='nombre' isRequired>
+                                <FormLabel>Nombre</FormLabel>
+                                <Input background="whiteAlpha.20" type='texto' name='nombre' placeholder='Nombre' value={nombre} onChange={handleInputChange} />
+                            </FormControl>
+                            <FormControl id='apellido' isRequired>
+                                <FormLabel>Apellido</FormLabel>
+                                <Input background="whiteAlpha.20" type='texto' name='apellido' placeholder='Apellido' value={apellido} onChange={handleInputChange} />
+                            </FormControl>
+                        </Grid>
+                        <Stack spacing={6}>
+                            <FormControl id='email' isRequired>
+                                <FormLabel>Correo</FormLabel>
+                                <Input background="whiteAlpha.20" type='email' name='email' placeholder='Correo' value={email} onChange={handleInputChange} />
+                            </FormControl>
+                            <FormControl id='password' isRequired>
+                                <FormLabel>Contraseña</FormLabel>
+                                <Input background="whiteAlpha.20" type='password' name='password' placeholder='contraseña' value={password} onChange={handleInputChange} />
+                            </FormControl>
+                            <FormControl id='confirmarContraseña' isRequired>
+                                <FormLabel>Confirmar Contraseña</FormLabel>
+                                <Input
+                                    background="whiteAlpha.20"
+                                    type='password'
+                                    name='confirmarContraseña'
+                                    value={confirmPassword}
+                                    pattern={password}
+                                    onChange={(e) => validar(e)}
+                                    placeholder='Confirmar Contraseña'
+                                    required true
+                                />
+                            </FormControl>
+                            <FormControl id='phone' isRequired>
+                                <FormLabel>Telefono</FormLabel>
+                                <Input background="whiteAlpha.20" type='texto' name='phone' placeholder='telefono' value={phone} onChange={handleInputChange} />
+                            </FormControl>
+                            {/*aqui esta el Check de acuerdo a los Tos*/}
+                            <FormControl>
+                                <HStack>
+                                    <Checkbox borderColor="blackAlpha.500" id="box" onChange={checkboxHandler}></Checkbox>
+                                    <FormLabel >Estoy de acuerdo con los <a hrf="#" onClick={onOpen}>Terminos y condiciones</a></FormLabel>
+                                </HStack>
+                            </FormControl>
+                            <FormControl id='identificar' placeContent='center'>
+                                <FormLabel>¿Ya estas Registrado?</FormLabel>
+                                <FormLabel textColor="blue.600"><Link to="/login"><a>Iniciar Sesion</a></Link></FormLabel>
+                            </FormControl>
+                            <Button isDisabled={!agree} type='submit' colorScheme='blue'>Registrar</Button>
+                        </Stack>
+                    </form>
+                </Grid>
+            </Container>
         </>
     )
-    }
+}
 
 export default Registro

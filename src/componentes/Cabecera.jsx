@@ -1,14 +1,13 @@
-import React from 'react'
 import { Link } from 'react-router-dom'
 import "./Cabecera.css"
 import { HamburgerIcon, Search2Icon } from '@chakra-ui/icons'
 import { supabase } from '../api/config'
-import { useState } from "react"
-
+import {Button} from '@chakra-ui/react'
+import { React,useState } from "react"
 
 function Cabecera() {
-    const [ cargando, setCargando]= useState(false);
-    const sesion =supabase.auth.getSession()
+
+    const [sesion,setSesion] = useState (supabase.auth.getSession() ? true : false);
     console.log(sesion);
     return (
         <div className='header'>
@@ -32,14 +31,21 @@ function Cabecera() {
 
             <div className='header_text'>
                 {sesion ? (
-                    <Link to='/' onClick={()=> supabase.auth.signOut()}>
-                        CERRAR SESION
-                    </Link>
+                    <Button colorScheme='blue'>
+                        <Link to='/login' onClick={ ()=> {
+                            setSesion(false);
+                            supabase.auth.signOut();
+                            }}>
+                            CERRAR SESION
+                        </Link>
+                    </Button>
                 ) : (
-                    <Link to='/login'>
-                        INICIAR SESION
-                    </Link>
-                    
+                    <Button colorScheme='blue' >
+                        <Link to='/home' onClick={ ()=> 
+                        setSesion(true)}>
+                            INICIAR SESION
+                        </Link>
+                    </Button>
                 )}
             </div>
         </div>
