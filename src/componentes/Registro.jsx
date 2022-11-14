@@ -115,7 +115,7 @@ const Registro = () => {
                             </FormControl>
                             <FormControl id='confirmarContraseña' isRequired>
                                 <FormLabel>Confirmar Contraseña</FormLabel>
-                                <Input type='password' name='confirmarContraseña' placeholder='Confirmar Contraseña' value={cpassword} onChange={e => setCPassword(e.target.value)} />
+                                <Input background="whiteAlpha.20" type='password' name='confirmarContraseña' placeholder='Confirmar Contraseña' value={cpassword} onChange={e => setCPassword(e.target.value)} />
                             </FormControl>
                             <FormControl id='phone' isRequired>
                                 <FormLabel>Telefono</FormLabel>
