@@ -22,17 +22,19 @@ const initialState = {
     email: '',
     password: '',
     phone: '',
-    admin: false
+    admin: false,
+
 }
 
 const Registro = () => {
     const sesion = supabase.auth.getSession()
     console.log(sesion);
+    const [cpassword, setCPassword] = useState('');
     const { isOpen, onOpen, onClose } = useDisclosure()
     const { formularioRegistro, handleInputChange } = useForm(initialState)
     const { nombre, apellido, email, password, phone } = formularioRegistro
     const [agree, setAgree] = useState(false);
-    const [confirmPassword, setConfirmPassword] = useState("");
+
     const checkboxHandler = async () => {
         setAgree(!agree);
     }
@@ -40,30 +42,31 @@ const Registro = () => {
         e.preventDefault()
         const { nombre, apellido, email, password, phone, admin } = formularioRegistro
         const resultado = await registroConEmail({ email, password })
-        // console.log(resultado.data.user.id)
-        if (resultado) {
-            const user = resultado.data.user
-            // console.log(user.id);
-            const data = {
-                id: user.id,
-                nombre: nombre,
-                apellido: apellido,
-                telefono: phone,
-                es_admin: admin
+        if (password !== cpassword) {
+            alert('contrasenia no coinciden')
+        }else{
+            if (resultado) {
+                const user = resultado.data.user
+                // console.log(user.id);
+                const data = {
+                    id: user.id,
+                    nombre: nombre,
+                    apellido: apellido,
+                    telefono: phone,
+                    es_admin: admin,
+    
+                }
+                await actualizarUsuario(data)
             }
-            await actualizarUsuario(data)
-            alert("Acabas de registrarte")
-        }
-    }
-    const validar = (e) => {
-        setConfirmPassword(e.target.value);
-        if (password != confirmPassword) {
-
-        } else {
 
         }
+        
+
+
+        // console.log(resultado.data.user.id)
 
     }
+
 
     return (
         <>
@@ -112,16 +115,7 @@ const Registro = () => {
                             </FormControl>
                             <FormControl id='confirmarContraseña' isRequired>
                                 <FormLabel>Confirmar Contraseña</FormLabel>
-                                <Input
-                                    background="whiteAlpha.20"
-                                    type='password'
-                                    name='confirmarContraseña'
-                                    value={confirmPassword}
-                                    pattern={password}
-                                    onChange={(e) => validar(e)}
-                                    placeholder='Confirmar Contraseña'
-                                    required true
-                                />
+                                <Input type='password' name='confirmarContraseña' placeholder='Confirmar Contraseña' value={cpassword} onChange={e => setCPassword(e.target.value)} />
                             </FormControl>
                             <FormControl id='phone' isRequired>
                                 <FormLabel>Telefono</FormLabel>
