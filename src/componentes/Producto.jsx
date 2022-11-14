@@ -8,7 +8,7 @@ function Producto() {
             <Box className='pro_info'>
                 <p>Producto #</p>
             </Box>
-            <Box className='pro_precio'>
+            <Box className='pro_precio' >
                 <p>Lps.</p>
             </Box>
             <Box className='pro_calificacion'>

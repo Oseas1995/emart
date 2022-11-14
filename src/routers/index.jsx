@@ -1,10 +1,14 @@
-import { Route, Routes } from "react-router-dom"
+import { Route, Routes} from "react-router-dom"
 import Home from "../componentes/Home"
 import Login from "../componentes/Login"
 import Registro from "../componentes/Registro"
 import VentanaModal from "../componentes/Modal"
 import "../index.css"
+
+
+
 const AppRouter = () => {
+
 
     return (
         <Routes>            

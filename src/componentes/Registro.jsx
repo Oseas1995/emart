@@ -13,6 +13,7 @@ import { actualizarUsuario, registroConEmail } from '../servicios/auth'
 import { useState } from "react"
 import terminos from '../servicios/terminos'
 import { Link } from 'react-router-dom'
+import { supabase } from '../api/config'
 
 const initialState = {
     nombre: '',
@@ -24,15 +25,13 @@ const initialState = {
 }
 
 const Registro = () => {
-    
+    const sesion =supabase.auth.getSession()
+    console.log(sesion);   
     const { isOpen, onOpen, onClose } = useDisclosure()
-
-    const { formularioRegistro, handleInputChange } = useForm(initialState)
-    
-    const { nombre, apellido, email, password, phone } = formularioRegistro
-    
+    const { formularioRegistro, handleInputChange } = useForm(initialState)    
+    const { nombre, apellido, email, password, phone } = formularioRegistro    
     const [agree, setAgree] = useState(false);
-    
+
     const checkboxHandler = async () => {
         setAgree(!agree);
     }
@@ -112,7 +111,7 @@ const Registro = () => {
                         <FormControl>
                             <HStack>
                                 <Checkbox id="box" onChange={checkboxHandler}></Checkbox>
-                                <FormLabel>Estoy de acuerdo con los <a onClick={onOpen}>Terminos y condiciones</a></FormLabel>
+                                <FormLabel>Estoy de acuerdo con los <a hrf="#" onClick={onOpen}>Terminos y condiciones</a></FormLabel>
                             </HStack>
                         </FormControl>
                         <FormControl id='identificar' placeContent='center'>

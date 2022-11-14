@@ -2,10 +2,14 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import "./Cabecera.css"
 import { HamburgerIcon, Search2Icon } from '@chakra-ui/icons'
-
+import { supabase } from '../api/config'
+import { useState } from "react"
 
 
 function Cabecera() {
+    const [ cargando, setCargando]= useState(false);
+    const sesion =supabase.auth.getSession()
+    console.log(sesion);
     return (
         <div className='header'>
             <div className='header_menuicon'>
@@ -13,13 +17,12 @@ function Cabecera() {
 
             </div>
 
+            <div className='header_text'>
+                <Link to='/'>
 
-            <div className='header_text'> 
-                    <Link to='/home'>
+                    PAGINA PRINCIPAL
 
-                        PAGINA PRINCIPAL
-
-                    </Link>
+                </Link>
             </div>
             <div className='header_searchbar'>
                 <input className='header_bar' />
@@ -28,19 +31,17 @@ function Cabecera() {
             </div>
 
             <div className='header_text'>
-                <Link to='/Login'>
-
-                        INICIAR SESION
-                        
+                {sesion ? (
+                    <Link to='/' onClick={()=> supabase.auth.signOut()}>
+                        CERRAR SESION
                     </Link>
-
+                ) : (
+                    <Link to='/login'>
+                        INICIAR SESION
+                    </Link>
+                    
+                )}
             </div>
-
-
-
-
-
-
         </div>
 
     )
