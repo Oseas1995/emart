@@ -31,7 +31,7 @@ const Login = () => {
         e.preventDefault()
         const resultado = await obtenerUsuario({ email, password })
         if (resultado.error) {
-            alert('ocurrio un error vuelva a probar con los datos correctos')
+            alert('Ocurrió un error vuelva a probar con los datos correctos')
         } else {
             alert('bienvenido')
             navigate('/');
@@ -50,7 +50,7 @@ const Login = () => {
         <>
             <Grid height="50%" placeContent="center">
                 <Container background="blue.50" alignItems="center" placeContent="center">
-                    <Heading  placeContent="center" alignItems="center" fontSize='2xl' >Login</Heading>
+                    <Heading  placeContent="center" alignItems="center" fontSize='2xl' >Iniciar Sesión</Heading>
 
                     <Stack spacing={5}>
                         <FormControl id='email' isRequired>
@@ -61,10 +61,10 @@ const Login = () => {
                             <FormLabel>Contraseña</FormLabel>
                             <Input background="whiteAlpha.20" type='password' name='password' placeholder='contraseña' value={password} onChange={handleInputChange} />
                         </FormControl>
-                        <Button type='submit' colorScheme='blue' onClick={handleSubmit}>Login</Button>
+                        <Button type='submit' colorScheme='blue' onClick={handleSubmit}>Iniciar Sesión</Button>
                         <FormControl id='registro'>
-                            <FormLabel>¿no tienes una cuenta?</FormLabel>
-                            <Link to='/registro'><p background='red'>Registrate aqui</p></Link>
+                            <FormLabel>¿No tienes una cuenta?</FormLabel>
+                            <Link to='/registro'><p background='red'>Regístrate aquí</p></Link>
                         </FormControl>
                     </Stack>
                 </Container>

@@ -6,7 +6,9 @@ import {
     ModalFooter,
     ModalBody,
     useDisclosure,
-    Container
+    Container,
+    color,
+    ModalHeader
 
 } from '@chakra-ui/react'
 import useForm from '../hooks/useForm'
@@ -43,7 +45,7 @@ const Registro = () => {
         const { nombre, apellido, email, password, phone, admin } = formularioRegistro
         const resultado = await registroConEmail({ email, password })
         if (password !== cpassword) {
-            alert('contrasenia no coinciden')
+            alert('Contraseña no coinciden')
         }else{
             if (resultado) {
                 const user = resultado.data.user
@@ -77,9 +79,12 @@ const Registro = () => {
                 onClose={onClose}
                 isOpen={isOpen}
                 motionPreset='slideInBottom'
+                size={'lg'}
+                scrollBehavior={'inside'}
             >
                 <ModalOverlay />
                 <ModalContent>
+                    <ModalHeader style={{fontSize: 'x-large'}}>Términos y Condiciones de Uso</ModalHeader>
                     <ModalBody>
                         {terminos()}
                     </ModalBody>
@@ -111,26 +116,26 @@ const Registro = () => {
                             </FormControl>
                             <FormControl id='password' isRequired>
                                 <FormLabel>Contraseña</FormLabel>
-                                <Input background="whiteAlpha.20" type='password' name='password' placeholder='contraseña' value={password} onChange={handleInputChange} />
+                                <Input background="whiteAlpha.20" type='password' name='password' placeholder='Contraseña' value={password} onChange={handleInputChange} />
                             </FormControl>
                             <FormControl id='confirmarContraseña' isRequired>
                                 <FormLabel>Confirmar Contraseña</FormLabel>
                                 <Input background="whiteAlpha.20" type='password' name='confirmarContraseña' placeholder='Confirmar Contraseña' value={cpassword} onChange={e => setCPassword(e.target.value)} />
                             </FormControl>
                             <FormControl id='phone' isRequired>
-                                <FormLabel>Telefono</FormLabel>
-                                <Input background="whiteAlpha.20" type='texto' name='phone' placeholder='telefono' value={phone} onChange={handleInputChange} />
+                                <FormLabel>Teléfono</FormLabel>
+                                <Input background="whiteAlpha.20" type='texto' name='phone' placeholder='Teléfono' value={phone} onChange={handleInputChange} />
                             </FormControl>
                             {/*aqui esta el Check de acuerdo a los Tos*/}
                             <FormControl>
                                 <HStack>
                                     <Checkbox borderColor="blackAlpha.500" id="box" onChange={checkboxHandler}></Checkbox>
-                                    <FormLabel >Estoy de acuerdo con los <a hrf="#" onClick={onOpen}>Terminos y condiciones</a></FormLabel>
+                                    <FormLabel>Estoy de acuerdo con los <a style={{color: "blue",cursor:"pointer"}} hrf="#" onClick={onOpen} >Términos y condiciones</a> </FormLabel>
                                 </HStack>
                             </FormControl>
                             <FormControl id='identificar' placeContent='center'>
                                 <FormLabel>¿Ya estas Registrado?</FormLabel>
-                                <FormLabel textColor="blue.600"><Link to="/login"><a>Iniciar Sesion</a></Link></FormLabel>
+                                <FormLabel textColor="blue.600"><Link to="/login"><a>Iniciar Sesión</a></Link></FormLabel>
                             </FormControl>
                             <Button isDisabled={!agree} type='submit' colorScheme='blue'>Registrar</Button>
                         </Stack>
