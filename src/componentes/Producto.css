@@ -8,8 +8,7 @@
     width: 100%;
     max-width: 400px;
     min-width: 100px;
-    background: rgb(109, 111, 199);
-    z-index: 1;
+    background-color: rgb(109, 111, 199);
 }
 
 .producto>img{
@@ -20,11 +19,13 @@
 }
 
 .pro_info{
+    display: flex; 
     height: 100px;
     margin-bottom: 30px;
 }
 
 .pro_precio{
+    display: flex; 
     margin-top: 5px;
 }
 

@@ -1,6 +1,6 @@
- import { supabase } from "../api/config";
+import { supabase } from "../api/config";
 
- export const registroConEmail = async (data) => {
+export const registroConEmail = async (data) => {
     let resultado
     try {
         resultado = await supabase.auth.signUp(data)
@@ -9,20 +9,19 @@
     } catch (error) {
         console.error(error);
     }
-    return resultado
- }
+}
 
- export const actualizarUsuario = async (data) => {
+export const actualizarUsuario = async (data) => {
     try {
         await supabase.from('usuario').upsert(data, { returning: 'minimal' })
     } catch (error) {
         console.error(error);
     }
- }
+}
 
- export const obtenerUsuario = async (data) => {
+export const obtenerUsuario = async (data) => {
     let resultado
-    try{
+    try {
         resultado = await supabase.auth.signInWithPassword(data)
         return resultado
     } catch (error) {

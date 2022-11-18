@@ -35,13 +35,12 @@ function Cabecera() {
 
             </div>
 
+            <div className='header_text'>
+                <Link to='/'>
 
-            <div className='header_text'> 
-                    <Link to='/home'>
+                    PAGINA PRINCIPAL
 
-                        PAGINA PRINCIPAL
-
-                    </Link>
+                </Link>
             </div>
             <div className='header_searchbar'>
                 <input className='header_bar' />
@@ -56,12 +55,6 @@ function Cabecera() {
                 }
 
             </div>
-
-
-
-
-
-
         </div>
 
     )
