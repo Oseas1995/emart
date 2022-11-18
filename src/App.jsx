@@ -6,7 +6,7 @@ function App() {
 
   return (
     <Container maxW='100%' h='100vh'>
-      <Cabecera />
+      {/* <Cabecera /> */}
       <AppRouter />
       <Fondo />
     </Container>

@@ -28,5 +28,9 @@
     } catch (error) {
         console.error(error)
     }
-
+    return resultado
  }
+
+export const logOut = async () => {
+    await supabase.auth.signOut()   
+}

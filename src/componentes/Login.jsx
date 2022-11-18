@@ -9,6 +9,7 @@ const initialState = {
     email: '',
     password: ''
 }
+
 const Login = () => {
     const { formularioRegistro, handleInputChange } = useForm(initialState)
     
@@ -17,12 +18,13 @@ const Login = () => {
     const handleSubmit = async (e) => {
         e.preventDefault()
         const resultado = await obtenerUsuario({ email, password })
-        if (resultado.error) {
-            alert('ocurrio un error vuelva a probar con los datos correctos')
-        }else{
-            alert('bienvenido')
+        //console.log(resultado);
+        // if (resultado.error) {
+        //     alert('ocurrio un error vuelva a probar con los datos correctos')
+        // }else{
+        //     alert('bienvenido')
             
-    }
+    // }
     }
     return (
         <>

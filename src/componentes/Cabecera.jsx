@@ -1,11 +1,33 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import "./Cabecera.css"
 import { HamburgerIcon, Search2Icon } from '@chakra-ui/icons'
+import { supabase } from '../api/config'
+import { logOut } from '../servicios/auth'
 
 
 
 function Cabecera() {
+    const [sesion, setSesion] = useState(false)
+    
+    const obtenerUser = async () => {
+        const { data: { user } } = await supabase.auth.getUser()
+        //console.log(user)
+        if(user){
+            setSesion(true)
+        }
+    }
+
+    useEffect(() => {
+        obtenerUser()   
+    }, [])
+    
+
+    const cerrarSesion = async () => {
+        await logOut()
+        setSesion(false)
+    }
+    
     return (
         <div className='header'>
             <div className='header_menuicon'>
@@ -28,11 +50,10 @@ function Cabecera() {
             </div>
 
             <div className='header_text'>
-                <Link to='/Login'>
-
-                        INICIAR SESION
-                        
-                    </Link>
+                { !sesion
+                    ? (<Link to='/Login'>INICIAR SESIÓN</Link>)
+                    : (<Link onClick={ cerrarSesion }>CERRAR SESIÓN</Link>)  
+                }
 
             </div>
 
