@@ -1,4 +1,4 @@
-import { Container } from '@chakra-ui/react'
+import { Box } from '@chakra-ui/react'
 import AppRouter from './routers'
 import Cabecera from './componentes/Cabecera'
 import Fondo from './componentes/Fondo'
@@ -7,7 +7,7 @@ import { supabase } from "./api/config"
 import { useNavigate } from 'react-router-dom'
 
 function App() {
-  const navigate = useNavigate();
+/*  const navigate = useNavigate();
   const [session, setSession] = useState(null)
   useEffect(() => {
     setSession(supabase.auth.getSession())
@@ -18,13 +18,13 @@ function App() {
         navigate('/home')
       }
     })
-  }, [])
+  }, [])*/
   return (
-    <Container maxW='100%' h='100vh'>
+    <Box mx={'auto'}>
       <Cabecera />
       <AppRouter />
       <Fondo />
-    </Container>
+    </Box>
   )
 }
 

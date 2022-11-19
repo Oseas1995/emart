@@ -1,14 +1,24 @@
-import { Link } from 'react-router-dom'
+import { Link, useAsyncValue } from 'react-router-dom'
 import "./Cabecera.css"
 import { HamburgerIcon, Search2Icon } from '@chakra-ui/icons'
 import { supabase } from '../api/config'
-import {Button} from '@chakra-ui/react'
-import { React,useState } from "react"
+import { Button } from '@chakra-ui/react'
+import { React, useEffect, useState } from "react"
+
 
 function Cabecera() {
+    const [session, setSession] = useState(null);
+    console.log(session)
+    useEffect(() => {
+        setSession(supabase.auth.getSession())
+        supabase.auth.onAuthStateChange((_event, session) => { setSession(session) })
+    }, [])
 
-    const [sesion,setSesion] = useState (supabase.auth.getSession() ? true : false);
-    console.log(sesion);
+    async function Desconectar() {
+        supabase.auth.signOut();
+
+    };
+
     return (
         <div className='header'>
             <div className='header_menuicon'>
@@ -30,19 +40,15 @@ function Cabecera() {
             </div>
 
             <div className='header_text'>
-                {sesion ? (
+                {session ? (
                     <Button colorScheme='blue'>
-                        <Link to='/login' onClick={ ()=> {
-                            setSesion(false);
-                            supabase.auth.signOut();
-                            }}>
+                        <Link to='/' onClick={() => { Desconectar() }}>
                             CERRAR SESION
                         </Link>
                     </Button>
                 ) : (
                     <Button colorScheme='blue' >
-                        <Link to='/home' onClick={ ()=> 
-                        setSesion(true)}>
+                        <Link to='/login'>
                             INICIAR SESION
                         </Link>
                     </Button>

@@ -1,8 +1,10 @@
-import { Route, Routes} from "react-router-dom"
+import { Route, Routes } from "react-router-dom"
 import Home from "../componentes/Home"
 import Login from "../componentes/Login"
 import Registro from "../componentes/Registro"
 import VentanaModal from "../componentes/Modal"
+import Administrador from "../paginas/perfilAdmin"
+import Usuario from "../paginas/perfilUsuario"
 import "../index.css"
 
 
@@ -11,12 +13,14 @@ const AppRouter = () => {
 
 
     return (
-        <Routes>            
+        <Routes>
             <Route index element={<Home />} />
             <Route path="/home" element={<Home />} />
             <Route path="/registro" element={<Registro />} />
             <Route path="/login" element={<Login />} />
-            <Route path="/modal" element={<VentanaModal/>} />
+            <Route path="/admin" element={<Administrador />} />
+            <Route path="/modal" element={<VentanaModal />} />
+            <Route path="/usuario" element={<Usuario />} />
         </Routes>
     )
 }

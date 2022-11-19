@@ -10,18 +10,20 @@ import {
 } from '@chakra-ui/react'
 import useForm from '../hooks/useForm'
 import { useEffect, useState } from "react"
-import { obtenerUsuario } from '../servicios/auth'
+import { obtenerUsuario,esAdministrador } from '../servicios/auth'
 import { Link, useNavigate } from 'react-router-dom'
 import { supabase } from '../api/config'
 
 
 const initialState = {
     email: '',
-    password: ''
+    password: '',
+    es_admin:'false'
 }
 const Login = () => {
     const { formularioRegistro, handleInputChange } = useForm(initialState)
-    const { email, password } = formularioRegistro
+    const { email, password, es_admin } = formularioRegistro
+    
 
 
     const navigate = useNavigate();
@@ -29,12 +31,18 @@ const Login = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault()
-        const resultado = await obtenerUsuario({ email, password })
+        const resultado = await obtenerUsuario({ email, password, es_admin})
         if (resultado.error) {
             alert('Ocurrió un error vuelva a probar con los datos correctos')
         } else {
-            alert('bienvenido')
-            navigate('/');
+            if(esAdministrador(es_admin)){
+                alert('bienvenido')
+                navigate('/admin');
+            }else{
+                alert('bienvenido')
+                navigate('/usuario');
+            }            
+            
         }
     };
 

@@ -29,4 +29,12 @@ export const obtenerUsuario = async (data) => {
     }
 }
 
+export const esAdministrador = async(data) =>{
+    try{
+        await supabase.from('usuario').select(data)
+    }catch (error){
+        console.error(error);
+    }
+}
+
 
