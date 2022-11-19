@@ -38,3 +38,6 @@ export const esAdministrador = async(data) =>{
 }
 
 
+export const logOut = async () => {
+    await supabase.auth.signOut()   
+}

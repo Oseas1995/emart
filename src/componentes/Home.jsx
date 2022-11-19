@@ -1,16 +1,14 @@
 import "./Home.css"
 import { Grid } from '@chakra-ui/react'
 import Producto from "./Producto"
-import { supabase } from '../api/config'
-
+import Cabecera from './Cabecera'
 
 function Home() {
-
-
-    const sesion =supabase.auth.getSession()
-    console.log(sesion);
-    return (       
+    return (
+        <>
+        <Cabecera />
         <div className="home">
+            
             <div className="home_contenedor">
                 <h1><big size="20px">Pagina Inicial</big></h1>
                 <Grid
@@ -27,6 +25,7 @@ function Home() {
                 </Grid>
             </div>
         </div >
+        </>
     )
 }
 

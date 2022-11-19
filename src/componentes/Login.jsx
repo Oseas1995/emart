@@ -20,6 +20,7 @@ const initialState = {
     password: '',
     es_admin:'false'
 }
+
 const Login = () => {
     const { formularioRegistro, handleInputChange } = useForm(initialState)
     const { email, password, es_admin } = formularioRegistro
