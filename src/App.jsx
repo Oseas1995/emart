@@ -1,4 +1,5 @@
 import { Box } from '@chakra-ui/react'
+import "./App.css"
 import AppRouter from './routers'
 import Cabecera from './componentes/Cabecera'
 import Fondo from './componentes/Fondo'

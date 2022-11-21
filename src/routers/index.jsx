@@ -1,11 +1,11 @@
 import { Route, Routes } from "react-router-dom"
-import Home from "../componentes/Home"
+import Home from "../componentes//MainPage/Home"
 import Login from "../componentes/Login"
 import Registro from "../componentes/Registro"
 import VentanaModal from "../componentes/Modal"
 import Administrador from "../paginas/perfilAdmin"
 import Usuario from "../paginas/perfilUsuario"
-import "../index.css"
+
 
 
 

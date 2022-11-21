@@ -3,10 +3,25 @@ import "./Cabecera.css"
 import { HamburgerIcon, Search2Icon } from '@chakra-ui/icons'
 import { supabase } from '../api/config'
 import { Button } from '@chakra-ui/react'
-import { React, useEffect, useState } from "react"
+import { React, useEffect, useState, } from "react"
+import { SidebarData } from './SidebarData'
+
+
+
+
+
+
 
 
 function Cabecera() {
+    const [sidebar, setSidebar] = useState(false);
+
+    const showSidebar = () => setSidebar(!sidebar);
+
+
+
+
+
     const [session, setSession] = useState(null);
     console.log(session)
     useEffect(() => {
@@ -20,9 +35,41 @@ function Cabecera() {
     };
 
     return (
+
+
+
+
+
+
+
+
         <div className='header'>
             <div className='header_menuicon'>
-                <HamburgerIcon w={10} h={10} className='header_icon' />
+                <Link to='#' >
+                    <HamburgerIcon w={10} h={10} className='header_icon' onClick={showSidebar} />
+
+
+                </Link>
+                <nav className={sidebar ? 'nav-menu active' : 'nav-menu'}>
+                    <ul className='nav-menu-items' onClick={showSidebar}>
+                        <li className='navbar-toggle'>
+                            <Link to='#' className='menu-bars'>
+
+                            </Link>
+                        </li>
+                        {SidebarData.map((item, index) => {
+                            return (
+                                <li key={index} className={item.cName}>
+                                    <Link to={item.path}>
+                                        {item.icon}
+                                        <span>{item.title}</span>
+                                    </Link>
+                                </li>
+                            );
+                        })}
+                    </ul>
+                </nav>
+
 
             </div>
 
@@ -46,6 +93,7 @@ function Cabecera() {
                             CERRAR SESION
                         </Link>
                     </Button>
+
                 ) : (
                     <Button colorScheme='blue' >
                         <Link to='/login'>
@@ -53,8 +101,10 @@ function Cabecera() {
                         </Link>
                     </Button>
                 )}
+
             </div>
         </div>
+
 
     )
 }
